@@ -74,7 +74,8 @@ public class c2_TransformingSequence extends TransformingSequenceBase {
     @Test
     public void cast() {
         Flux<String> numbersFlux = object_service()
-                .map(i -> (String) i); //todo: change this line only
+                .cast(String.class);
+                //.map(i -> (String) i); //todo: change this line only
 
 
         StepVerifier.create(numbersFlux)
@@ -89,6 +90,7 @@ public class c2_TransformingSequence extends TransformingSequenceBase {
     @Test
     public void maybe() {
         Mono<String> result = maybe_service()
+                .defaultIfEmpty("no results")
                 //todo: change this line only
                 ;
 
@@ -104,7 +106,8 @@ public class c2_TransformingSequence extends TransformingSequenceBase {
     @Test
     public void sequence_sum() {
         Mono<Integer> sum = null;
-        numerical_service()
+        sum = numerical_service()
+        .reduce(Integer::sum)
         //todo: do your changes here
         ;
 
