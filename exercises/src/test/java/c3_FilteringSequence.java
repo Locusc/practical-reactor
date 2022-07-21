@@ -71,7 +71,8 @@ public class c3_FilteringSequence extends FilteringSequenceBase {
      */
     @Test
     public void watch_out_for_the_spiders() {
-        Mono<String> firstResult = Mono.from(fragile_service().limitRate(1));
+        //todo: change code as you need
+        Mono<String> firstResult = fragile_service().next();
 
         //don't change code below
         StepVerifier.create(firstResult)
