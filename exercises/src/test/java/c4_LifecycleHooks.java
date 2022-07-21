@@ -73,7 +73,7 @@ public class c4_LifecycleHooks extends LifecycleHooksBase {
         AtomicInteger counter = new AtomicInteger(0);
 
         Flux<Integer> temperatureFlux = room_temperature_service()
-                .doOnNext(c -> System.out.println(counter.getAndIncrement()));
+                .doOnNext(c -> System.out.println(counter.incrementAndGet()));
 
         StepVerifier.create(temperatureFlux)
                     .expectNextCount(20)
